@@ -7,16 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-    status: boolean = false;
+    user: Observable<firebase.User>;
 
   constructor(private angularFireAuth: AngularFireAuth) {
+    this.user = angularFireAuth.authState;
    }
 
   login(email: string, password: string) {
     this.angularFireAuth
     .auth
     .signInWithEmailAndPassword(email, password)
-    .then(res => {
+    .then(value => {
       console.log('Successfully signed in!');
     })
     .catch(err => {
@@ -28,19 +29,5 @@ export class AuthService {
     this.angularFireAuth
     .auth
     .signOut();
-  }
-
-  isLoggedIn(): boolean {
-    //   return false;
-    this.angularFireAuth.authState.subscribe(res => {
-        if (res && res.uid) {
-          console.log('user is logged in');
-          this.status = true;
-        } else {
-          console.log('user not logged in');
-          this.status = false;
-        }
-      });
-    return this.status;
   }
 }

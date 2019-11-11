@@ -9,16 +9,20 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
-  { path: 'app-login', component: LoginComponent }
+  { path: 'app-login', component: LoginComponent },
+  { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
