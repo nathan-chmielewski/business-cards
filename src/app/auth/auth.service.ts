@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
     user: Observable<firebase.User>;
 
-  constructor(private angularFireAuth: AngularFireAuth) {
+  constructor(public angularFireAuth: AngularFireAuth, private router: Router) {
     this.user = angularFireAuth.authState;
    }
 
@@ -23,6 +25,10 @@ export class AuthService {
     .catch(err => {
       console.log('Incorrect credentials:', err.message);
     });
+  }
+
+  isLoggedIn() {
+    // return this.angularFireAuth.authState.pipe(first());
   }
 
   logout() {
