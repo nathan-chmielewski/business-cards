@@ -1,3 +1,66 @@
-<div>
+<!-- <div>
     <p>Dashboard</p>
+</div> -->
+
+<div class="form-group">
+    <h4>Business Cards Dashboard </h4>
+    <form [formGroup]="businessCardForm"
+        (ngSubmit)="onSubmit(businessCardForm.value)"
+        class="form-group">
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-2 col-form-label">First name</label>
+            <div class="col-sm-10">
+                <input type="text" 
+                    class="form-control" 
+                    id="firstName" 
+                    placeholder="First"
+                    [formControl]="businessCardForm.controls['firstName']">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
+            <div class="col-sm-10">
+                <input type="text" 
+                        class="form-control" 
+                        id="lastName" 
+                        placeholder="Last"
+                        [formControl]="businessCardForm.controls['lastName']">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="my@email.com"
+                        [formControl]="businessCardForm.controls['email']">
+            </div>
+        </div>
+    <div class="form-group row">
+            <label for="phoneNumber" class="col-sm-2 col-form-label">Phone number</label>
+            <div class="col-sm-10">
+                <input type="text" 
+                        class="form-control" 
+                        id="phoneNumber" 
+                        placeholder="(123) 456-7890"
+                        [formControl]="businessCardForm.controls['phoneNumber']">
+            </div>
+    </div>
+    <div class="form-group row">
+            <label for="additionalInfo" class="col-sm-2 col-form-label">Information</label>
+            <div class="col-sm-10">
+                <input type="text" 
+                        class="form-control" 
+                        id="phoneNumber" 
+                        placeholder="additional info"
+                        [formControl]="businessCardForm.controls['additionalInfo']">
+            </div>
+    </div>
+    <div>
+        <button type="submit" 
+                class="btn btn-default">Submit
+        </button>
+    </div>
+    </form>
 </div>

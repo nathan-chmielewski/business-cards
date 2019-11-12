@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h4>Login</h4>
 <!-- <h1 *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}</h1> -->
 
 <!-- <div *ngIf="!(authService.userData | async)">
@@ -11,9 +11,30 @@
 </div>
 
 <button (click)="signOut()" *ngIf="authService.userData | async">Logout</button> -->
+<form *ngIf="!(authService.userData | async)">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="text" 
+             class="form-control" 
+             id="email" 
+             placeholder="Enter email"
+             name="email" #email>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" 
+             class="form-control" 
+             id="password" 
+             placeholder="Enter password"
+             name="password" #password>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+    <a [routerLink]="['/app-dashboard']" class="btn btn-default" (click)="login(email.value, password.value)">
+      Submit
+    </a>
+  </form>
 
-
-<form class="form-inline" *ngIf="!(authService.userData | async)">
+<!-- <form class="form-inline" *ngIf="!(authService.userData | async)">
   <div class="form-group">
     <label for="email">Email: </label>
     <input class="form-control" 
@@ -30,7 +51,7 @@
   <a [routerLink]="['/app-dashboard']" class="btn btn-default" (click)="login(email.value, password.value)">
     Submit
   </a>
-</form>
+</form> -->
 
 <!-- <div class="well" *ngIf="authService.getUser()">
   Logged in as <b>{{ authService.getUser() }}</b>
