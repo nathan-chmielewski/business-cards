@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BusinessCardService } from './business-card.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
@@ -36,7 +37,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, BusinessCardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
