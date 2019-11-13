@@ -19,32 +19,15 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      // return this.authService.user.pipe(map( user => {
-      //   return !!user;
-      // }));
-
       return this.authService.user.pipe(
         take(1),
         map((user) => !!user),
         tap((loggedIn) => {
           if (!loggedIn) {
             console.log('access denied');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/app-login']);
           }
         }),
       );
   }
-
-
-      // return new Promise((resolve, reject) => {
-      //   firebase.auth().onAuthStateChanged((user: firebase.User) => {
-      //     if (user) {
-      //       resolve(true);
-      //     } else {
-      //       console.log('User is not logged in');
-      //       this.router.navigate(['/login']);
-      //       resolve(false);
-      //     }
-      //   });
-      // });
 }

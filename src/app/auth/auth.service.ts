@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
     user: Observable<firebase.User>;
+    isLoggedIn: boolean = false;
 
   constructor(public angularFireAuth: AngularFireAuth, private router: Router) {
     this.user = angularFireAuth.authState;
@@ -21,17 +22,15 @@ export class AuthService {
     .signInWithEmailAndPassword(email, password)
     .then(value => {
       console.log('Successfully signed in!');
+      this.isLoggedIn = true;
     })
     .catch(err => {
       console.log('Incorrect credentials:', err.message);
     });
   }
 
-  isLoggedIn() {
-    // return this.angularFireAuth.authState.pipe(first());
-  }
-
   logout() {
+    this.isLoggedIn = false;
     this.angularFireAuth
     .auth
     .signOut();

@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
 
   login(email: string, password: string) {
     this.authService.login(email, password);
+    this.email = '';
+    this.password = '';
   }
 
   logout() {

@@ -18,7 +18,8 @@ import { BusinessCardService } from './business-card.service';
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
   { path: 'app-login', component: LoginComponent },
-  { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] }
+  { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
