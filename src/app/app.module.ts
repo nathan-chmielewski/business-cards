@@ -6,13 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AuthService } from './auth/auth.service';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
-import { BusinessCardComponent } from './business-card/business-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BusinessCardComponent } from './business-card/business-card.component';
 import { BusinessCardService } from './business-card.service';
 
 const routes: Routes = [
@@ -36,9 +39,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, BusinessCardService],
+  providers: [AuthService, BusinessCardService, AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

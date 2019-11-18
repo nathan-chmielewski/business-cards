@@ -27,9 +27,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(value: string): void {
-    console.log('Business card form submitted: ', value);
-    this.businessCardService.createBusinessCard(value);
+  onSubmit(businessCard: BusinessCard): void {
+    console.log('Business card form submitted: ', businessCard);
+    this.businessCardService.AddBusinessCard(businessCard);
   }
 
 }
