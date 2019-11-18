@@ -11,7 +11,7 @@
 </div>
 
 <button (click)="signOut()" *ngIf="authService.userData | async">Logout</button> -->
-<form *ngIf="!(authService.userData | async)">
+<form *ngIf="!(authService.user | async)">
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="text" 
