@@ -9,9 +9,14 @@ export class BusinessCardService {
   // businessCards: BusinessCard[];
   businessCardsRef: AngularFireList<any>;
   businessCardRef: AngularFireObject<any>;
+  uid: any;
 
   constructor(private db: AngularFireDatabase) {
-    this.businessCardsRef = this.db.list('/business-cards');
+    this.uid = 1;
+
+    // this.businessCardsRef = this.db.list('/business-cards');
+    this.businessCardsRef = this.db.list('/users/' + this.uid + '/business-cards');
+
   }
 
   AddBusinessCard(businessCard: BusinessCard): void {
