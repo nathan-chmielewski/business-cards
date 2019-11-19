@@ -10,8 +10,9 @@ import { BusinessCard } from '../business-card/business-card.model';
   styleUrls: ['./business-cards.component.css']
 })
 export class BusinessCardsComponent implements OnInit {
-//   businessCards: Observable<any[]>;
-    businessCards: Array<BusinessCard>;
+  businessCardsRef: Observable<any[]>;
+//   const businessCardsArray: Array<any[]>;
+  businessCards: Array<BusinessCard>;
 
 
   constructor(private db: AngularFireDatabase,
@@ -20,10 +21,12 @@ export class BusinessCardsComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
+    this.businessCardsRef.subscribe(res => console.log(res));
+
     this.businessCardService.businessCardsRef.valueChanges()
     .subscribe(businessCards => this.businessCards = businessCards);
-    // this.businessCards = this.businessCardService.businessCardsRef.valueChanges();
-    // this.businessCards.subscribe(res => console.log(res));
     // this.businessCards = this.businessCardService.businessCards;
   }
 

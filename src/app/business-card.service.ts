@@ -37,7 +37,7 @@ export class BusinessCardService {
       additionalInfo: businessCard.additionalInfo
     })
     .then(ref => {
-        console.log(ref.key);
+        // console.log(ref.key);
         this.db.object('/users/' + this.uid + '/business-cards/' + ref.key)
         .update({key: ref.key });
     })

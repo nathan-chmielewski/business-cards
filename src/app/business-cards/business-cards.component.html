@@ -2,7 +2,7 @@
 <h4>Business cards list:</h4>
 <div>
     <app-business-card
-        *ngFor="let businessCard of businessCards"
+        *ngFor="let businessCard of (businessCardsRef | async)"
         [businessCard]="businessCard"
         [businessCardRef]="businessCard">
     </app-business-card>
