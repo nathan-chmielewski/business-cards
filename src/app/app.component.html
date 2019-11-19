@@ -1,16 +1,22 @@
 <div class="page-header">
   <div class="container">
-      <h1>Business cards</h1>
-      <div>
-          <ul class="list-inline">
-              <li class="nav-item">
-                      <a class="nav-link active" [routerLink]="['/app-login']">Login</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" [routerLink]="['/app-dashboard']">Dashboard</a>
-              </li>
-          </ul>
-      </div>
+      <!-- <h1>Business cards</h1>
+      <div class="row">
+            <div class="col-sm">
+                    <a class="nav-link active" [routerLink]="['/app-login']">Login</a>
+            </div>
+            <div class="col-sm">
+                <a class="nav-link active" [routerLink]="['/app-dashboard']">Dashboard</a>
+            </div>
+      </div> -->
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="#">Business Cards App</a>
+        <div class="navbar-nav" id="navbarNav">
+            <a class="nav-link active" [routerLink]="['/app-login']">Login</a>
+            <a class="nav-link active" [routerLink]="['/app-dashboard']">Dashboard</a>
+            <a class="nav-link active" [routerLink]="['/app-login']" (click)="authService.logout()">Logout</a>
+        </div>
+    </nav>
   </div>
 </div>
 <div id="content">

@@ -18,7 +18,12 @@ export class BusinessCardsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.businessCards = this.businessCardService.businessCards;
+    this.businessCards = this.businessCardService.businessCardsRef.valueChanges();
+    this.businessCards.subscribe(res => console.log(res));
+    // this.businessCards = this.businessCardService.businessCards;
   }
+
+  // ngOnDestroy() {
+  // }
 
 }

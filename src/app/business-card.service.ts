@@ -10,7 +10,7 @@ export class BusinessCardService {
   // businessCards: BusinessCard[];
   businessCardsRef: AngularFireList<any>;
   businessCardRef: AngularFireObject<any>;
-  businessCards: Observable<any[]>;
+  // businessCards: Observable<any[]>;
 
   uid: any;
 
@@ -19,13 +19,13 @@ export class BusinessCardService {
 
     // this.businessCardsRef = this.db.list('/business-cards');
     this.businessCardsRef = this.db.list('/users/' + this.uid + '/business-cards');
-    this.businessCards = this.businessCardsRef.valueChanges();
-    this.businessCards.subscribe(res => console.log(res));
+    // this.businessCards = this.businessCardsRef.valueChanges();
+    // this.businessCards.subscribe(res => console.log(res));
   }
 
-  getBusinessCards(): Observable<any[]> {
-    return this.businessCards;
-  }
+  // getBusinessCards(): Observable<any[]> {
+  //   return this.businessCards;
+  // }
 
   AddBusinessCard(businessCard: BusinessCard): void {
     console.log('Creating business card: ', businessCard);

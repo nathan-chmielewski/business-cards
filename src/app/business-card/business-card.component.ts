@@ -10,7 +10,7 @@ import { AngularFireObject } from '@angular/fire/database';
 export class BusinessCardComponent implements OnInit {
   @Input() businessCard: BusinessCard;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

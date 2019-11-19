@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class AppComponent {
   title = 'business-cards';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private authService: AuthService) { }
+
 }

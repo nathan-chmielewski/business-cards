@@ -1,3 +1,4 @@
+<p></p>
 <h4>Login</h4>
 <!-- <h1 *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}</h1> -->
 
@@ -30,11 +31,10 @@
     </div>
     <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
     <div>
-      <button class="btn btn-default" (click)="login(email.value, password.value)">
+      <button class="btn btn-primary" (click)="login(email.value, password.value)">
         Submit
       </button>
-    </div>    
-
+    </div>
   </form>
 
 <!-- <form class="form-inline" *ngIf="!(authService.userData | async)">

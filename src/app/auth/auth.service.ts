@@ -31,9 +31,16 @@ export class AuthService {
   }
 
   logout() {
-    this.isLoggedIn = false;
     this.angularFireAuth
     .auth
-    .signOut();
+    .signOut()
+    .then(() => {
+      console.log('Successfully signed out!');
+      this.router.navigate(['/app-login']);
+      this.isLoggedIn = false;
+    })
+    .catch(err => {
+      console.log('Error when attempting to log out: ', err.message);
+    });
   }
 }
