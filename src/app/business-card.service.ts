@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BusinessCard } from './business-card/business-card.model';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class BusinessCardService {
   // businessCards: BusinessCard[];
   businessCardsRef: AngularFireList<any>;
   businessCardRef: AngularFireObject<any>;
+  businessCards: Observable<any[]>;
+
   uid: any;
 
   constructor(private db: AngularFireDatabase) {
@@ -16,7 +19,12 @@ export class BusinessCardService {
 
     // this.businessCardsRef = this.db.list('/business-cards');
     this.businessCardsRef = this.db.list('/users/' + this.uid + '/business-cards');
+    this.businessCards = this.businessCardsRef.valueChanges();
+    this.businessCards.subscribe(res => console.log(res));
+  }
 
+  getBusinessCards(): Observable<any[]> {
+    return this.businessCards;
   }
 
   AddBusinessCard(businessCard: BusinessCard): void {

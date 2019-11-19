@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BusinessCard } from './business-card.model';
+import { AngularFireObject } from '@angular/fire/database';
 
 @Component({
   selector: 'app-business-card',
@@ -7,7 +8,7 @@ import { BusinessCard } from './business-card.model';
   styleUrls: ['./business-card.component.css']
 })
 export class BusinessCardComponent implements OnInit {
-  businessCard: BusinessCard;
+  @Input() businessCard: BusinessCard;
 
   constructor() { }
 

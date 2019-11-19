@@ -1,0 +1,8 @@
+
+<h4>Business cards list:</h4>
+<div>
+    <app-business-card
+        *ngFor="let businessCard of (businessCards | async)"
+        [businessCard]="businessCard">
+    </app-business-card>
+  </div>
