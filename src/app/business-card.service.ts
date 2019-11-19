@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class BusinessCardService {
   // businessCards: BusinessCard[];
   businessCardsRef: AngularFireList<any>;
-  businessCardRef: AngularFireObject<any>;
+//   businessCardRef: AngularFireObject<any>;
   // businessCards: Observable<any[]>;
 
   uid: any;
@@ -36,8 +36,20 @@ export class BusinessCardService {
       phoneNumber: businessCard.phoneNumber,
       additionalInfo: businessCard.additionalInfo
     })
+    .then(ref => {
+        console.log(ref.key);
+        this.db.object('/users/' + this.uid + '/business-cards/' + ref.key)
+        .update({key: ref.key });
+    })
     .catch(error => {
       console.log(error);
     });
+  }
+
+  RemoveBusinessCard(businessCard: BusinessCard): void {
+    console.log('Deleting business card: ', businessCard);
+    //   this.businessCardsRef.remove(businessCardRef);
+    this.db.object('/users/' + this.uid + '/business-cards/' + businessCard.key).remove();
+    // this.db.object('/users/' + this.uid + '/business-cards/' + businessCard.key).remove();
   }
 }

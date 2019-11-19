@@ -4,6 +4,7 @@ export class BusinessCard {
     email: string;
     phoneNumber: string;
     additionalInfo: string;
+    key: string;
 
     constructor (firstName: string, lastName: string, email: string,
                  phoneNumber: string, additionalInfo: string)
@@ -13,6 +14,7 @@ export class BusinessCard {
             this.email = email;
             this.phoneNumber = phoneNumber;
             this.additionalInfo = additionalInfo;
+            this.key = '';
         }
 
 }

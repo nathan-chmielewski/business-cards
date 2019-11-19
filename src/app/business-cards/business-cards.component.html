@@ -3,6 +3,7 @@
 <div>
     <app-business-card
         *ngFor="let businessCard of (businessCards | async)"
-        [businessCard]="businessCard">
+        [businessCard]="businessCard"
+        [businessCardRef]="businessCard">
     </app-business-card>
   </div>
