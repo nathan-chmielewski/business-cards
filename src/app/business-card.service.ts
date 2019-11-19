@@ -48,8 +48,6 @@ export class BusinessCardService {
 
   RemoveBusinessCard(businessCard: BusinessCard): void {
     console.log('Deleting business card: ', businessCard);
-    //   this.businessCardsRef.remove(businessCardRef);
     this.db.object('/users/' + this.uid + '/business-cards/' + businessCard.key).remove();
-    // this.db.object('/users/' + this.uid + '/business-cards/' + businessCard.key).remove();
   }
 }

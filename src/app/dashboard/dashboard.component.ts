@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   onSubmit(businessCard: BusinessCard): void {
     console.log('Business card form submitted: ', businessCard);
     this.businessCardService.AddBusinessCard(businessCard);
+    this.businessCardForm.reset();
   }
 
 }
