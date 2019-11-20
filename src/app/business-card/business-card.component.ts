@@ -37,7 +37,8 @@ export class BusinessCardComponent implements OnInit {
     this.businessCardService.RemoveBusinessCard(this.businessCard);
   }
 
-  UpdateBusinessCard(): void {
-    this.businessCardService.UpdateBusinessCard(this.businessCard);
+    UpdateBusinessCard(): void {
+        console.log(this.businessCardForm);
+        this.businessCardService.UpdateBusinessCard(this.businessCard.key, this.businessCardForm.value);
   }
 }

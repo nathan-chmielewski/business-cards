@@ -50,9 +50,15 @@ export class BusinessCardService {
     this.db.object('/users/' + this.authService.userId + '/business-cards/' + businessCard.key).remove();
   }
 
-  UpdateBusinessCard(businessCard: BusinessCard): void {
+  UpdateBusinessCard(businessCardRefKey: string, businessCard: BusinessCard): void {
     console.log('Updating business card: ', businessCard);
-    this.db.object('/users/' + this.authService.userId + '/business-cards/' + businessCard.key)
-    .update(businessCard);
+    this.db.list('/users/' + this.authService.userId + '/business-cards/')
+    .update(businessCardRefKey, {
+        firstName: businessCard.firstName,
+        lastName: businessCard.lastName,
+        email: businessCard.email,
+        phoneNumber: businessCard.phoneNumber,
+        additionalInfo: businessCard.additionalInfo
+    });
   }
 }

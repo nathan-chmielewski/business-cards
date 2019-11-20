@@ -25,7 +25,7 @@ export class AuthService {
       console.log('Successfully signed in!');
       this.isLoggedIn = true;
     //   this.userId = value.user.uid;
-      console.log(this.userId);
+      console.log(value.user.uid);
       this.router.navigate(['/app-dashboard']);
     })
     .catch(err => {
