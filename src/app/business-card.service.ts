@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BusinessCard } from './business-card/business-card.model';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,11 @@ export class BusinessCardService {
 //   businessCardRef: AngularFireObject<any>;
   // businessCards: Observable<any[]>;
 
-  uid: any;
-
-  constructor(private db: AngularFireDatabase) {
-    this.uid = 1;
+  constructor(private db: AngularFireDatabase,
+              private authService: AuthService) {
 
     // this.businessCardsRef = this.db.list('/business-cards');
-    this.businessCardsRef = this.db.list('/users/' + this.uid + '/business-cards');
+    this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards');
     // this.businessCards = this.businessCardsRef.valueChanges();
     // this.businessCards.subscribe(res => console.log(res));
   }
@@ -38,7 +37,7 @@ export class BusinessCardService {
     })
     .then(ref => {
         // console.log(ref.key);
-        this.db.object('/users/' + this.uid + '/business-cards/' + ref.key)
+        this.db.object('/users/' + this.authService.userId + '/business-cards/' + ref.key)
         .update({key: ref.key });
     })
     .catch(error => {
@@ -48,6 +47,12 @@ export class BusinessCardService {
 
   RemoveBusinessCard(businessCard: BusinessCard): void {
     console.log('Deleting business card: ', businessCard);
-    this.db.object('/users/' + this.uid + '/business-cards/' + businessCard.key).remove();
+    this.db.object('/users/' + this.authService.userId + '/business-cards/' + businessCard.key).remove();
+  }
+
+  UpdateBusinessCard(businessCard: BusinessCard): void {
+    console.log('Updating business card: ', businessCard);
+    this.db.object('/users/' + this.authService.userId + '/business-cards/' + businessCard.key)
+    .update(businessCard);
   }
 }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AuthService {
     user: Observable<firebase.User>;
     isLoggedIn: boolean = false;
+    userId: string = '1';
 
   constructor(public angularFireAuth: AngularFireAuth, private router: Router) {
     this.user = angularFireAuth.authState;
@@ -22,8 +23,10 @@ export class AuthService {
     .signInWithEmailAndPassword(email, password)
     .then(value => {
       console.log('Successfully signed in!');
-      this.router.navigate(['/app-dashboard']);
       this.isLoggedIn = true;
+    //   this.userId = value.user.uid;
+      console.log(this.userId);
+      this.router.navigate(['/app-dashboard']);
     })
     .catch(err => {
       console.log('Incorrect credentials:', err.message);

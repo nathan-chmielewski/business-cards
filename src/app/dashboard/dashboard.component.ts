@@ -10,7 +10,6 @@ import { BusinessCardService } from '../business-card.service';
 })
 
 export class DashboardComponent implements OnInit {
-  businessCards: BusinessCard[];
   businessCardForm: FormGroup;
 
   constructor(fb: FormBuilder,
