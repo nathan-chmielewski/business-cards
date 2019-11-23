@@ -60,9 +60,12 @@ export class BusinessCardService {
     });
   }
 
-  convertImageToBusinessCard(webcamImage: WebcamImage): void {
-
-
+  convertImageToBusinessCard(base64Image: string): void {
+    // Google Cloud requires that the header for a base64 image be removed
+    const parsedImage = base64Image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+    console.log('SELECTED IMAGE 3');
+    console.log(parsedImage);
+    console.log('SELECTED IMAGE 3');
   }
 
 }
