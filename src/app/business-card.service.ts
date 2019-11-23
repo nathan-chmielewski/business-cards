@@ -3,6 +3,8 @@ import { BusinessCard } from './business-card/business-card.model';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
+import { WebcamImage } from './modules/webcam/domain/webcam-image';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +23,6 @@ export class BusinessCardService {
     // this.businessCards = this.businessCardsRef.valueChanges();
     // this.businessCards.subscribe(res => console.log(res));
   }
-
-  // getBusinessCards(): Observable<any[]> {
-  //   return this.businessCards;
-  // }
 
   AddBusinessCard(businessCard: BusinessCard): void {
     console.log('Creating business card: ', businessCard);
@@ -61,4 +59,10 @@ export class BusinessCardService {
         additionalInfo: businessCard.additionalInfo
     });
   }
+
+  convertImageToBusinessCard(webcamImage: WebcamImage): void {
+
+
+  }
+
 }

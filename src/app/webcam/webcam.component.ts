@@ -3,6 +3,7 @@ import { WebcamInitError } from '../modules/webcam/domain/webcam-init-error';
 import { WebcamImage } from '../modules/webcam/domain/webcam-image';
 import { Subject, Observable } from 'rxjs';
 import { WebcamUtil } from '../modules/webcam/util/webcam.util';
+import domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-webcam',
@@ -20,6 +21,7 @@ export class WebcamComponent implements OnInit {
 
   // latest snapshot
   public webcamImage: WebcamImage = null;
+  public base64: string;
 
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
@@ -58,6 +60,27 @@ export class WebcamComponent implements OnInit {
   public handleImage(webcamImage: WebcamImage): void {
     console.log('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
+    // this.convertToBase64();
+  }
+
+  public convertToBase64() {
+
+    const imgNode = document.getElementById(`image`);
+    // const imgNode = this.webcamImage.imageAsDataUrl;
+    console.log('SELECTED IMAGE');
+    console.log(imgNode);
+    console.log('SELECTED IMAGE');
+    domtoimage.toPng(imgNode)
+    .then( (dataUrl: string) => {
+        console.log('SELECTED IMAGE 2');
+        console.log(dataUrl);
+        this.base64 = dataUrl;
+        console.log('SELECTED IMAGE 2');
+    }).catch( (e: any) => {
+        console.log('SELECTED IMAGE BASE64 SOMETHING WENT WRONG');
+        console.log(e);
+    });
+
   }
 
   public cameraWasSwitched(deviceId: string): void {
