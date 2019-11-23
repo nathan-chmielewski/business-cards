@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+  { path: 'app-business-cards', component: BusinessCardsComponent, canActivate: [ AuthGuard ] },
   { path: '**', component: LoginComponent }
 ];
 
