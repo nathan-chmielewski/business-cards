@@ -18,12 +18,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { BusinessCardService } from './business-card.service';
 import { BusinessCardsComponent } from './business-cards/business-cards.component';
+import { WebcamModule } from './modules/webcam/webcam.module';
+import { WebcamComponent } from './webcam/webcam.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path: 'app-business-cards', component: BusinessCardsComponent, canActivate: [ AuthGuard ] },
+  { path: 'app-webcam', component: WebcamComponent, canActivate: [ AuthGuard ] },
   { path: '**', component: LoginComponent }
 ];
 
@@ -33,13 +36,15 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     BusinessCardComponent,
-    BusinessCardsComponent
+    BusinessCardsComponent,
+    WebcamComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    WebcamModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
