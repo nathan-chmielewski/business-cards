@@ -20,6 +20,7 @@ import { BusinessCardService } from './business-card.service';
 import { BusinessCardsComponent } from './business-cards/business-cards.component';
 import { WebcamModule } from './modules/webcam/webcam.module';
 import { WebcamComponent } from './webcam/webcam.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
@@ -45,6 +46,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     WebcamModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
