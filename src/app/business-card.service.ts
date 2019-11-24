@@ -62,4 +62,9 @@ export class BusinessCardService {
         additionalInfo: businessCard.additionalInfo
     });
   }
+
+  SearchBusinessCard(searchTerm: string): AngularFireList<any[]> {
+    return this.db.list('/users/' + this.authService.userId + '/business-cards',
+                 ref => ref.orderByChild('firstName').equalTo('searchTerm'));
+  }
 }

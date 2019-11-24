@@ -1,1 +1,15 @@
-<p>search-business-cards works!</p>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
+    <div class="input-group-append">
+        <button class="btn btn-secondary" type="button" (click)="queryList()">
+        <i class="fa fa-search"></i>
+        </button>
+    </div>
+</div>
+<!-- <div>
+    <app-business-card
+        *ngFor="let businessCard of searchResults"
+        [businessCard]="businessCard"
+        [businessCardRef]="businessCard">
+    </app-business-card>
+</div> -->
