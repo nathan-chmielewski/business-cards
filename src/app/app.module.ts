@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'app-login', component: LoginComponent },
   { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path: 'app-new-business-card', component: WebcamComponent, canActivate: [ AuthGuard ] },
+  { path: 'app-search-business-cards', component: SearchBusinessCardsComponent, canActivate: [ AuthGuard ] },
   { path: '**', component: LoginComponent }
 ];
 
