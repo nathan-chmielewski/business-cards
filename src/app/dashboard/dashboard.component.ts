@@ -12,24 +12,24 @@ import { BusinessCardService } from '../business-card.service';
 export class DashboardComponent implements OnInit {
   businessCardForm: FormGroup;
 
-  constructor(fb: FormBuilder,
-              private businessCardService: BusinessCardService) {
-    this.businessCardForm = fb.group ({
-      'firstName': [''],
-      'lastName': [''],
-      'email': [''],
-      'phoneNumber': [''],
-      'additionalInfo': ['']
-    });
+//   constructor(fb: FormBuilder, private businessCardService: BusinessCardService) {
+    constructor() {
+    // this.businessCardForm = fb.group ({
+    //   'firstName': [''],
+    //   'lastName': [''],
+    //   'email': [''],
+    //   'phoneNumber': [''],
+    //   'additionalInfo': ['']
+    // });
    }
 
   ngOnInit() {
   }
 
-  onSubmit(businessCard: BusinessCard): void {
-    console.log('Business card form submitted: ', businessCard);
-    this.businessCardService.AddBusinessCard(businessCard);
-    this.businessCardForm.reset();
-  }
+//   onSubmit(businessCard: BusinessCard): void {
+//     console.log('Business card form submitted: ', businessCard);
+//     this.businessCardService.AddBusinessCard(businessCard);
+//     this.businessCardForm.reset();
+//   }
 
 }

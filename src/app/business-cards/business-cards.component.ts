@@ -23,7 +23,7 @@ export class BusinessCardsComponent implements OnInit {
   ngOnInit() {
 
     this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
-    this.businessCardsRef.subscribe(res => console.log(res));
+    // this.businessCardsRef.subscribe(res => console.log(res));
 
     this.businessCardService.businessCardsRef.valueChanges()
     .subscribe(businessCards => this.businessCards = businessCards);
