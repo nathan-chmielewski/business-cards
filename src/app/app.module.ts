@@ -21,14 +21,13 @@ import { BusinessCardsComponent } from './business-cards/business-cards.componen
 import { WebcamModule } from './modules/webcam/webcam.module';
 import { WebcamComponent } from './webcam/webcam.component';
 import { HttpClientModule } from '@angular/common/http';
-// import { NewBusinessCardComponent } from './new-business-card/new-business-card.component';
+import { SearchBusinessCardsComponent } from './search-business-cards/search-business-cards.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path: 'app-new-business-card', component: WebcamComponent, canActivate: [ AuthGuard ] },
-  { path: 'app-business-cards', component: BusinessCardsComponent, canActivate: [ AuthGuard ] },
   { path: '**', component: LoginComponent }
 ];
 
@@ -39,7 +38,8 @@ const routes: Routes = [
     DashboardComponent,
     BusinessCardComponent,
     BusinessCardsComponent,
-    WebcamComponent
+    WebcamComponent,
+    SearchBusinessCardsComponent
     // NewBusinessCardComponent
   ],
   imports: [

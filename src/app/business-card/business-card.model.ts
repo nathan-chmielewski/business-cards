@@ -5,6 +5,7 @@ export class BusinessCard {
     phoneNumber: string;
     additionalInfo: string;
     key: string;
+    imgUrl: string;
 
     constructor (firstName: string, lastName: string, email: string,
                  phoneNumber: string, additionalInfo: string)
@@ -15,6 +16,7 @@ export class BusinessCard {
             this.phoneNumber = phoneNumber;
             this.additionalInfo = additionalInfo;
             this.key = '';
+            this.imgUrl = '';
         }
 
 }
