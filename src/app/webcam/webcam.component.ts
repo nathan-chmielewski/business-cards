@@ -38,7 +38,7 @@ export class WebcamComponent implements OnInit {
                private http: HttpClient,
                private fb: FormBuilder) {
 
-    this.businessCard = new BusinessCard('', '', '', '', '');
+    // this.businessCard = new BusinessCard('', '', '', '', '');
     
     this.businessCardForm = fb.group ({
         'firstName': [''],
@@ -56,14 +56,14 @@ export class WebcamComponent implements OnInit {
     //   });
     }
 
-    ngOnChanges() {
-        this.businessCardForm = this.fb.group ({
-        'firstName': [this.businessCard.firstName],
-        'lastName': [this.businessCard.lastName],
-        'email': [this.businessCard.email],
-        'phoneNumber': [this.businessCard.phoneNumber],
-        'additionalInfo': [this.businessCard.additionalInfo]
-        });
+    OnChanges() {
+        // this.businessCardForm = this.fb.group ({
+        // 'firstName': [this.businessCard.firstName],
+        // 'lastName': [this.businessCard.lastName],
+        // 'email': [this.businessCard.email],
+        // 'phoneNumber': [this.businessCard.phoneNumber],
+        // 'additionalInfo': [this.businessCard.additionalInfo]
+        // });
     }
     
     public triggerSnapshot(): void {
@@ -157,40 +157,65 @@ export class WebcamComponent implements OnInit {
     let fullTextAnnotation = arr["fullTextAnnotation"];
     let textAnnotations = arr["textAnnotations"];
 
-    let firstName = textAnnotations[1];
-    let lastName = textAnnotations[2];
+    let firstName = textAnnotations[1].description;
+    let lastName = textAnnotations[2].description;
+    let email;
+    let phoneNumber;
     // let additionalInfo = fullTextAnnotation["text"].replace("\\n", "\n");
     let additionalInfo = fullTextAnnotation["text"];
 
     // Set business card values
-    this.businessCard.firstName = firstName.description;
-    this.businessCard.lastName = lastName.description;
-    this.businessCard.additionalInfo = additionalInfo;
+    // this.businessCard.firstName = firstName.description;
+    // this.businessCard.lastName = lastName.description;
+    // this.businessCard.additionalInfo = additionalInfo;
+
+    if ((typeof textAnnotations[1] === 'undefined')
+         || textAnnotations[1] === null) {
+        firstName = '';
+    } else {
+        firstName = textAnnotations[1].description;
+        console.log('Extract firstName:', firstName);
+    }
+
+    if ((typeof textAnnotations[2] === 'undefined')
+        || textAnnotations[2] === null) {
+        lastName = '';
+    } else {
+        lastName = textAnnotations[2].description;
+        console.log('Extract lastName:', lastName);
+    }
+
 
     if ((typeof this.extractEmail(fullTextAnnotation["text"]) === 'undefined')
          || this.extractEmail(fullTextAnnotation["text"]) === null) {
-        this.businessCard.email = '';
+        email = '';
     } else {
-        this.businessCard.email = this.extractEmail(fullTextAnnotation["text"])[0];
+        email = this.extractEmail(fullTextAnnotation["text"])[0];
         console.log('Extract email:', this.businessCard.email);
     }
 
     if ((typeof this.extractPhoneNumber(fullTextAnnotation["text"]) === 'undefined')
          || this.extractPhoneNumber(fullTextAnnotation["text"]) === null) {
-             this.businessCard.phoneNumber = '';
+             phoneNumber = '';
     } else {
-        this.businessCard.phoneNumber = this.extractPhoneNumber(fullTextAnnotation["text"])[0];
+        phoneNumber = this.extractPhoneNumber(fullTextAnnotation["text"])[0];
         console.log('Extract phone number:', this.businessCard.phoneNumber);
     }
 
-    this.businessCardForm = this.fb.group ({
-        'firstName': [this.businessCard.firstName],
-        'lastName': [this.businessCard.lastName],
-        'email': [this.businessCard.email],
-        'phoneNumber': [this.businessCard.phoneNumber],
-        'additionalInfo': [this.businessCard.additionalInfo]
-        });
+    this.businessCardForm.get('firstName').setValue(firstName);
+    this.businessCardForm.get('lastName').setValue(lastName);
+    this.businessCardForm.get('phoneNumber').setValue(phoneNumber);
+    this.businessCardForm.get('email').setValue(email);
+    this.businessCardForm.get('additionalInfo').setValue(additionalInfo);
 
+
+    // this.businessCardForm = this.fb.group ({
+    //     'firstName': [this.businessCard.firstName],
+    //     'lastName': [this.businessCard.lastName],
+    //     'email': [this.businessCard.email],
+    //     'phoneNumber': [this.businessCard.phoneNumber],
+    //     'additionalInfo': [this.businessCard.additionalInfo]
+    //     });
         
     // console.log('[1] First text field:', firstName.description);
     // console.log('Full Text Annotation:', fullTextAnnotation["text"]);
