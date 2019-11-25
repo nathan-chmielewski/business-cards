@@ -14,10 +14,11 @@
         <div class="btn-toolbar justify-content-center" role="toolbar">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 <span>
-                    <button class="btn btn-light" (click)="toggleUpdateForm()">
+                    <a class="btn btn-light" 
+                       [routerLink]="['/app-update-business-card', businessCard.key]">
                         <i class="fa fa-edit"></i>
                         Update
-                    </button>
+                    </a>
                 </span>
             </div>
             <div>

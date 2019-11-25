@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-business-card',
-  templateUrl: './business-card.component.html',
-  styleUrls: ['./business-card.component.css']
+    selector: 'app-business-card',
+    templateUrl: './business-card.component.html',
+    styleUrls: ['./business-card.component.css']
 })
 export class BusinessCardComponent implements OnInit {
     @Input() businessCard: BusinessCard;
@@ -17,27 +17,27 @@ export class BusinessCardComponent implements OnInit {
     toggleUpdate: boolean = false;
 //   @Input() businessCardRef: Observable<any>;
 
-  constructor(private businessCardService: BusinessCardService,
-              private fb: FormBuilder) {
-  }
+    constructor(private businessCardService: BusinessCardService,
+                private fb: FormBuilder) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  ngOnChanges() {
-    this.businessCardForm = this.fb.group ({
-        'firstName': [this.businessCard.firstName],
-        'lastName': [this.businessCard.lastName],
-        'organization': [this.businessCard.organization],
-        'email': [this.businessCard.email],
-        'phoneNumber': [this.businessCard.phoneNumber],
-        'additionalInfo': [this.businessCard.additionalInfo]
-      });
-  }
+    OnChanges() {
+        this.businessCardForm = this.fb.group ({
+            'firstName': [this.businessCard.firstName],
+            'lastName': [this.businessCard.lastName],
+            'organization': [this.businessCard.organization],
+            'email': [this.businessCard.email],
+            'phoneNumber': [this.businessCard.phoneNumber],
+            'additionalInfo': [this.businessCard.additionalInfo]
+        });
+    }
 
-  RemoveBusinessCard(): void {
-    this.businessCardService.RemoveBusinessCard(this.businessCard);
-  }
+    RemoveBusinessCard(): void {
+        this.businessCardService.RemoveBusinessCard(this.businessCard);
+    }
 
     UpdateBusinessCard(): void {
         // console.log(this.businessCardForm);

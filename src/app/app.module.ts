@@ -23,12 +23,14 @@ import { WebcamComponent } from './webcam/webcam.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBusinessCardsComponent } from './search-business-cards/search-business-cards.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateBusinessCardComponent } from './update-business-card/update-business-card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path: 'app-new-business-card', component: WebcamComponent, canActivate: [ AuthGuard ] },
+  { path: 'app-update-business-card/:key', component: UpdateBusinessCardComponent, canActivate: [ AuthGuard ]},
   { path: 'app-search-business-cards', component: SearchBusinessCardsComponent, canActivate: [ AuthGuard ] },
   { path: '**', component: LoginComponent }
 ];
@@ -41,7 +43,8 @@ const routes: Routes = [
     BusinessCardComponent,
     BusinessCardsComponent,
     WebcamComponent,
-    SearchBusinessCardsComponent
+    SearchBusinessCardsComponent,
+    UpdateBusinessCardComponent
     // NewBusinessCardComponent
   ],
   imports: [
