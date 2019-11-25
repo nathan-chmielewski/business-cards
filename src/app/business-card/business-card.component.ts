@@ -14,6 +14,7 @@ export class BusinessCardComponent implements OnInit {
     @Input() businessCard: BusinessCard;
     @Input() businessCardRef: AngularFireObject<any>;
     @Input() businessCardForm: FormGroup;
+    toggleUpdate: boolean = false;
 //   @Input() businessCardRef: Observable<any>;
 
   constructor(private businessCardService: BusinessCardService,
@@ -41,5 +42,9 @@ export class BusinessCardComponent implements OnInit {
     UpdateBusinessCard(): void {
         // console.log(this.businessCardForm);
         this.businessCardService.UpdateBusinessCard(this.businessCard.key, this.businessCardForm.value);
+    }
+
+  toggleUpdateForm() {
+      this.toggleUpdate = !this.toggleUpdate;
   }
 }
