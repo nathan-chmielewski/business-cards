@@ -23,18 +23,10 @@ export class SearchBusinessCardsComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        // this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
-        // // this.businessCardsRef.subscribe(res => console.log(res));
-        // this.businessCardService.businessCardsRef.valueChanges()
-        // .subscribe(businessCards => this.businessCards = businessCards);
-
     }
 
     queryList(): void {
         console.log('Searching term: ', this.term);
-        // this.searchResults = this.db.list('/users/' + this.authService.userId + '/business-cards',
-        // ref => ref.orderByChild('firstName').equalTo('Nathan'));
         this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards',
         ref => ref.orderByChild('firstName').equalTo(this.term)).valueChanges();
 

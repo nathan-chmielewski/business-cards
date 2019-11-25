@@ -22,6 +22,7 @@ import { WebcamModule } from './modules/webcam/webcam.module';
 import { WebcamComponent } from './webcam/webcam.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBusinessCardsComponent } from './search-business-cards/search-business-cards.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { path: '', redirectTo: 'app-login', pathMatch: 'full' },
@@ -53,7 +54,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NoopAnimationsModule
   ],
   providers: [AuthService, BusinessCardService, AngularFireDatabase],
   bootstrap: [AppComponent]

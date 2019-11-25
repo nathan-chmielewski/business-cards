@@ -21,10 +21,7 @@ export class BusinessCardService {
               private authService: AuthService,
               private http: HttpClient) {
 
-    // this.businessCardsRef = this.db.list('/business-cards');
     this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards');
-    // this.businessCards = this.businessCardsRef.valueChanges();
-    // this.businessCards.subscribe(res => console.log(res));
   }
 
   AddBusinessCard(businessCard: BusinessCard): void {

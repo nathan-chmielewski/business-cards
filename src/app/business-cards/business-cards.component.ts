@@ -17,20 +17,12 @@ export class BusinessCardsComponent implements OnInit {
 
   constructor(private db: AngularFireDatabase,
               private businessCardService: BusinessCardService) {
-
   }
 
   ngOnInit() {
-
     this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
-    // this.businessCardsRef.subscribe(res => console.log(res));
 
     this.businessCardService.businessCardsRef.valueChanges()
     .subscribe(businessCards => this.businessCards = businessCards);
-    // this.businessCards = this.businessCardService.businessCards;
   }
-
-  // ngOnDestroy() {
-  // }
-
 }

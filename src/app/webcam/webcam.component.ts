@@ -35,37 +35,23 @@ export class WebcamComponent implements OnInit {
     businessCard: BusinessCard;
     
     constructor (private businessCardService: BusinessCardService,
-               private http: HttpClient,
-               private fb: FormBuilder) {
+                 private http: HttpClient,
+                 private fb: FormBuilder) {
 
-    // this.businessCard = new BusinessCard('', '', '', '', '');
-    
     this.businessCardForm = fb.group ({
         'firstName': [''],
         'lastName': [''],
         'email': [''],
         'phoneNumber': [''],
+        'organization': [''],
         'additionalInfo': ['']
     });
 }
 
     public ngOnInit(): void {
-    // WebcamUtil.getAvailableVideoInputs()
-    //   .then((mediaDevices: MediaDeviceInfo[]) => {
-    //     this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
-    //   });
+
     }
 
-    OnChanges() {
-        // this.businessCardForm = this.fb.group ({
-        // 'firstName': [this.businessCard.firstName],
-        // 'lastName': [this.businessCard.lastName],
-        // 'email': [this.businessCard.email],
-        // 'phoneNumber': [this.businessCard.phoneNumber],
-        // 'additionalInfo': [this.businessCard.additionalInfo]
-        // });
-    }
-    
     public triggerSnapshot(): void {
         this.trigger.next();
     }
@@ -162,6 +148,7 @@ export class WebcamComponent implements OnInit {
     let email;
     let phoneNumber;
     // let additionalInfo = fullTextAnnotation["text"].replace("\\n", "\n");
+    let organization;
     let additionalInfo = fullTextAnnotation["text"];
 
     // Set business card values
@@ -183,6 +170,14 @@ export class WebcamComponent implements OnInit {
     } else {
         lastName = textAnnotations[2].description;
         console.log('Extract lastName:', lastName);
+    }
+
+    if ((typeof textAnnotations[3] === 'undefined')
+    || textAnnotations[3] === null) {
+        organization = '';
+    } else {
+        organization = textAnnotations[3].description;
+        console.log('Extract organization:', organization);
     }
 
 
@@ -207,26 +202,6 @@ export class WebcamComponent implements OnInit {
     this.businessCardForm.get('phoneNumber').setValue(phoneNumber);
     this.businessCardForm.get('email').setValue(email);
     this.businessCardForm.get('additionalInfo').setValue(additionalInfo);
-
-
-    // this.businessCardForm = this.fb.group ({
-    //     'firstName': [this.businessCard.firstName],
-    //     'lastName': [this.businessCard.lastName],
-    //     'email': [this.businessCard.email],
-    //     'phoneNumber': [this.businessCard.phoneNumber],
-    //     'additionalInfo': [this.businessCard.additionalInfo]
-    //     });
-        
-    // console.log('[1] First text field:', firstName.description);
-    // console.log('Full Text Annotation:', fullTextAnnotation["text"]);
-    // console.log('Additional info: ', additionalInfo);
-
-    // if (typeof this.extractPhoneNumber(fullTextAnnotation["text"]) === 'undefined') {
-    //     this.businessCard.phoneNumber = '';
-    // } else {
-    //     this.businessCard.phoneNumber = this.extractEmail(fullTextAnnotation["text"])[0];
-    //     console.log('Extract phone number:', this.businessCard.phoneNumber);
-    // }
 
   }
 
