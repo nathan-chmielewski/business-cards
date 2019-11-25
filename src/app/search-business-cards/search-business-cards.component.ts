@@ -3,6 +3,8 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { BusinessCardService } from '../business-card.service';
 import { Observable } from 'rxjs';
 import { BusinessCard } from '../business-card/business-card.model';
+import { AuthService } from '../auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-business-cards',
@@ -15,21 +17,27 @@ export class SearchBusinessCardsComponent implements OnInit {
     searchResults: AngularFireList<any[]>;
     term: string;
 
-  constructor(private businessCardService: BusinessCardService) {
+  constructor(private db: AngularFireDatabase,
+              private authService: AuthService,
+              private businessCardService: BusinessCardService) {
     }
 
     ngOnInit() {
-        this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
-        // this.businessCardsRef.subscribe(res => console.log(res));
 
+        // this.businessCardsRef = this.businessCardService.businessCardsRef.valueChanges();
+        // // this.businessCardsRef.subscribe(res => console.log(res));
         // this.businessCardService.businessCardsRef.valueChanges()
         // .subscribe(businessCards => this.businessCards = businessCards);
-        // this.businessCards = this.businessCardService.businessCards;
+
     }
 
     queryList(): void {
         console.log('Searching term: ', this.term);
-        // this.searchResults = this.businessCardService.SearchBusinessCard(this.term);
+        // this.searchResults = this.db.list('/users/' + this.authService.userId + '/business-cards',
+        // ref => ref.orderByChild('firstName').equalTo('Nathan'));
+        this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards',
+        ref => ref.orderByChild('firstName').equalTo(this.term)).valueChanges();
+
     }
 
 }

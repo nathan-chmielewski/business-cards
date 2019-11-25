@@ -8,8 +8,16 @@
 </div>
 <!-- <div>
     <app-business-card
-        *ngFor="let businessCard of searchResults"
+        *ngFor="let businessCard of businessCards"
         [businessCard]="businessCard"
         [businessCardRef]="businessCard">
     </app-business-card>
 </div> -->
+
+<div>
+        <app-business-card
+            *ngFor="let businessCard of (businessCardsRef | async)"
+            [businessCard]="businessCard"
+            [businessCardRef]="businessCard">
+        </app-business-card>
+</div>
