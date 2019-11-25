@@ -29,6 +29,7 @@ export class BusinessCardService {
     this.businessCardsRef.push( {
       firstName: businessCard.firstName,
       lastName: businessCard.lastName,
+      organization: businessCard.organization,
       email: businessCard.email,
       phoneNumber: businessCard.phoneNumber,
       additionalInfo: businessCard.additionalInfo
@@ -54,6 +55,7 @@ export class BusinessCardService {
     .update(businessCardRefKey, {
         firstName: businessCard.firstName,
         lastName: businessCard.lastName,
+        organization: businessCard.organization,
         email: businessCard.email,
         phoneNumber: businessCard.phoneNumber,
         additionalInfo: businessCard.additionalInfo

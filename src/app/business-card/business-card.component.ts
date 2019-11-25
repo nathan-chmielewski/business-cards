@@ -27,6 +27,7 @@ export class BusinessCardComponent implements OnInit {
     this.businessCardForm = this.fb.group ({
         'firstName': [this.businessCard.firstName],
         'lastName': [this.businessCard.lastName],
+        'organization': [this.businessCard.organization],
         'email': [this.businessCard.email],
         'phoneNumber': [this.businessCard.phoneNumber],
         'additionalInfo': [this.businessCard.additionalInfo]

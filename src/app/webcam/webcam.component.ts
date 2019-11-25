@@ -41,9 +41,9 @@ export class WebcamComponent implements OnInit {
     this.businessCardForm = fb.group ({
         'firstName': [''],
         'lastName': [''],
+        'organization': [''],
         'email': [''],
         'phoneNumber': [''],
-        'organization': [''],
         'additionalInfo': ['']
     });
 }
@@ -143,18 +143,13 @@ export class WebcamComponent implements OnInit {
     let fullTextAnnotation = arr["fullTextAnnotation"];
     let textAnnotations = arr["textAnnotations"];
 
-    let firstName = textAnnotations[1].description;
-    let lastName = textAnnotations[2].description;
+    let firstName;
+    let lastName;
     let email;
     let phoneNumber;
     // let additionalInfo = fullTextAnnotation["text"].replace("\\n", "\n");
     let organization;
     let additionalInfo = fullTextAnnotation["text"];
-
-    // Set business card values
-    // this.businessCard.firstName = firstName.description;
-    // this.businessCard.lastName = lastName.description;
-    // this.businessCard.additionalInfo = additionalInfo;
 
     if ((typeof textAnnotations[1] === 'undefined')
          || textAnnotations[1] === null) {
@@ -180,7 +175,6 @@ export class WebcamComponent implements OnInit {
         console.log('Extract organization:', organization);
     }
 
-
     if ((typeof this.extractEmail(fullTextAnnotation["text"]) === 'undefined')
          || this.extractEmail(fullTextAnnotation["text"]) === null) {
         email = '';
@@ -199,8 +193,9 @@ export class WebcamComponent implements OnInit {
 
     this.businessCardForm.get('firstName').setValue(firstName);
     this.businessCardForm.get('lastName').setValue(lastName);
-    this.businessCardForm.get('phoneNumber').setValue(phoneNumber);
+    this.businessCardForm.get('organization').setValue(organization);
     this.businessCardForm.get('email').setValue(email);
+    this.businessCardForm.get('phoneNumber').setValue(phoneNumber);
     this.businessCardForm.get('additionalInfo').setValue(additionalInfo);
 
   }
