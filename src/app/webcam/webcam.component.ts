@@ -147,9 +147,9 @@ export class WebcamComponent implements OnInit {
     let lastName;
     let email;
     let phoneNumber;
-    // let additionalInfo = fullTextAnnotation["text"].replace("\\n", "\n");
+    let additionalInfo = fullTextAnnotation["text"].replace("\\n", "\n");
     let organization;
-    let additionalInfo = fullTextAnnotation["text"];
+    // let additionalInfo = fullTextAnnotation["text"];
 
     if ((typeof textAnnotations[1] === 'undefined')
          || textAnnotations[1] === null) {
