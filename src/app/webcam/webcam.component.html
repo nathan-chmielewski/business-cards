@@ -2,21 +2,32 @@
 <h4>Create Business Card</h4>
 <p></p>
 <div style="text-align:center">
-    <div>
+    <div  *ngIf="!webcamImage">
         <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
                 [imageQuality]="1"
                 (initError)="handleInitError($event)">
         </webcam>
         <br/>
-        <button class="btn btn-primary" (click)="triggerSnapshot();">Take A Snapshot</button>
+        <button class="btn btn-primary" (click)="triggerSnapshot();">
+            <i class="fa fa-camera"></i>
+            Capture
+        </button>
         <br/>
         <br/>
     </div>
 </div>
   
 <div class="snapshot" style="text-align:center" *ngIf="webcamImage">
-    <img [src]="webcamImage.imageAsDataUrl" id="image" (load)="convertToBase64()" />
+    <img [width]="500" [src]="webcamImage.imageAsDataUrl" id="image" (load)="convertToBase64()" />
+    <p style="margin: 6px"></p>
+    <div>
+        <button class="btn btn-danger" (click)="webcamImage = !webcamImage">
+            <i class="fa fa-camera"></i>
+            Retake
+        </button>
+    </div>
 </div>
+
 <br/>
 <h4 *ngIf="errors.length > 0">Messages:</h4>
 <ul *ngFor="let error of errors">
