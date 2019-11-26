@@ -41,6 +41,7 @@ export class BusinessCardComponent implements OnInit {
 
     UpdateBusinessCard(): void {
         // console.log(this.businessCardForm);
+        this.businessCardForm['imgUrl'] = this.businessCard.imgUrl;
         this.businessCardService.UpdateBusinessCard(this.businessCard.key, this.businessCardForm.value);
     }
 

@@ -33,7 +33,8 @@ export class BusinessCardService {
       organization: businessCard.organization,
       email: businessCard.email,
       phoneNumber: businessCard.phoneNumber,
-      additionalInfo: businessCard.additionalInfo
+      additionalInfo: businessCard.additionalInfo,
+      imgUrl: businessCard.imgUrl
     })
     .then(ref => {
         // console.log(ref.key);

@@ -44,7 +44,8 @@ export class WebcamComponent implements OnInit {
         'organization': [''],
         'email': [''],
         'phoneNumber': [''],
-        'additionalInfo': ['']
+        'additionalInfo': [''],
+        'imgUrl': ['']
     });
 }
 
@@ -197,6 +198,7 @@ export class WebcamComponent implements OnInit {
     this.businessCardForm.get('email').setValue(email);
     this.businessCardForm.get('phoneNumber').setValue(phoneNumber);
     this.businessCardForm.get('additionalInfo').setValue(additionalInfo);
+    this.businessCardForm.get('imgUrl').setValue(this.webcamImage.imageAsDataUrl);
 
   }
 
