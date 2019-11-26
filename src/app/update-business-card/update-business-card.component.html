@@ -6,11 +6,14 @@
 <p></p>
 <h4>Update Business Card</h4>
 <p></p>
-<div class="snapshot" *ngIf="this.webcamImage">
-    <img img style='display:block; width:18rem' [src]="businessCard.imgUrl" id="image" />
+<div *ngIf="this.webcamImage">
+    <img img style='display:block; width: 24rem; border-radius: 3px;' 
+    [src]="businessCard.imgUrl" 
+    id="image" />
 </div>
+
 <p></p>
-<div class="form-group">
+<div class="form-group" *ngIf="this.webcamImage">
     <form [formGroup]="businessCardForm"
         class="form-group">
         <div class="form-group row">

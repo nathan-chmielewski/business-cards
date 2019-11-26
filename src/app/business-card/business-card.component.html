@@ -1,9 +1,10 @@
 <p></p>
 <!-- <div class="card deck"> -->
-<div class="card" style="width: 18rem;">
-    <div class="snapshot">
-        <img img style='display:block; width:18rem' [src]="businessCard.imgUrl" id="image" />
-    </div>
+<div class="card" style="width: 18rem; justify-content: center;">
+    <img img style='display:block; width: 17.875rem; border-radius: 3px;' 
+         [src]="businessCard.imgUrl" 
+         id="image"
+         class="card-img-top"/>
     <div class="card-body">
         <h5 class="card-title">{{ businessCard.firstName }} {{ businessCard.lastName }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ businessCard.organization }}</h6>

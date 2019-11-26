@@ -215,5 +215,6 @@ export class WebcamComponent implements OnInit {
     console.log('Business card form submitted: ', businessCard);
     this.businessCardService.AddBusinessCard(businessCard);
     this.businessCardForm.reset();
+    this.webcamImage = null;
 }
 }
