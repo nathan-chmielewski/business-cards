@@ -74,5 +74,6 @@ export class UpdateBusinessCardComponent implements OnInit {
   UpdateBusinessCard(): void {
     // console.log(this.businessCardForm);
     this.businessCardService.UpdateBusinessCard(this.businessCard.key, this.businessCardForm.value);
+    this.router.navigate(['/app-dashboard']);  
   }
 }
