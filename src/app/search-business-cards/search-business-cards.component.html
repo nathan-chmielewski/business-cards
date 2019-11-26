@@ -7,11 +7,29 @@
         </button>
     </div>
 </div>
+
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="searchNameButton" 
+           id="searchName" [value]="1" [(ngModel)]="searchType">
+    <label class="form-check-label" for="searchName">
+          First name
+    </label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="searchOrgButton" 
+           id="searchOrg" [value]="2" [(ngModel)]="searchType">
+    <label class="form-check-label" for="searchOrg">
+          Organization
+    </label>
+</div>
+
+
 <p></p>
-    <div class="row">
-                <app-business-card
-                *ngFor="let businessCard of (businessCardsRef | async)"
-                [businessCard]="businessCard"
-                [businessCardRef]="businessCard">
-            </app-business-card>
-    </div>
+<div class="card-deck">
+    <app-business-card
+        *ngFor="let businessCard of (businessCardsRef | async)"
+        [businessCard]="businessCard"
+        [businessCardRef]="businessCard">
+    </app-business-card>
+</div>
+
