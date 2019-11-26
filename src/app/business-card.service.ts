@@ -6,6 +6,7 @@ import { AuthService } from './auth/auth.service';
 import { WebcamImage } from './modules/webcam/domain/webcam-image';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,11 @@ export class BusinessCardService {
     });
   }
 
+//   GetBusinessCard(key: string): AngularFireList<any[]> {
+//     return this.db.list('/users/' + this.authService.userId + '/business-cards',
+//     ref => ref.orderByChild('key').equalTo('key'));
+//   }
+
   RemoveBusinessCard(businessCard: BusinessCard): void {
     console.log('Deleting business card: ', businessCard);
     this.db.object('/users/' + this.authService.userId + '/business-cards/' + businessCard.key).remove();
@@ -62,8 +68,8 @@ export class BusinessCardService {
     });
   }
 
-  SearchBusinessCard(searchTerm: string): AngularFireList<any[]> {
-    return this.db.list('/users/' + this.authService.userId + '/business-cards',
-                 ref => ref.orderByChild('firstName').equalTo('searchTerm'));
-  }
+//   SearchBusinessCard(searchTerm: string): AngularFireList<any[]> {
+//     return this.db.list('/users/' + this.authService.userId + '/business-cards',
+//                  ref => ref.orderByChild('firstName').equalTo('searchTerm'));
+//   }
 }
