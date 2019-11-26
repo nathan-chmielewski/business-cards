@@ -15,11 +15,11 @@ import * as firebase from 'firebase/app';
 })
 export class UpdateBusinessCardComponent implements OnInit {
     businessCard: BusinessCard;
-    businessCardRef: AngularFireObject<any>;
     businessCardForm: FormGroup;
     businessCardsRef: Observable<any[]>;
     businessCards: Array<BusinessCard>;
-    searchResults: AngularFireList<any[]>;
+    webcamImage: boolean = false;
+    
 
 
   constructor(private businessCardService: BusinessCardService,
@@ -42,7 +42,8 @@ export class UpdateBusinessCardComponent implements OnInit {
         'organization': [''],
         'email': [''],
         'phoneNumber': [''],
-        'additionalInfo': ['']
+        'additionalInfo': [''],
+        'imgUrl': ['']
     });
 
     this.businessCardsRef.subscribe(val => {
@@ -55,25 +56,33 @@ export class UpdateBusinessCardComponent implements OnInit {
             'organization': [this.businessCard.organization],
             'email': [this.businessCard.email],
             'phoneNumber': [this.businessCard.phoneNumber],
-            'additionalInfo': [this.businessCard.additionalInfo]
+            'additionalInfo': [this.businessCard.additionalInfo],
+            'imgUrl': [this.businessCard.imgUrl]
         });
+        this.webcamImage = true;
     });
   }
 
   OnChanges() {
-    this.businessCardForm = this.fb.group ({
-        'firstName': [this.businessCard.firstName],
-        'lastName': [this.businessCard.lastName],
-        'organization': [this.businessCard.organization],
-        'email': [this.businessCard.email],
-        'phoneNumber': [this.businessCard.phoneNumber],
-        'additionalInfo': [this.businessCard.additionalInfo]
-    });
+    // this.businessCardForm = this.fb.group ({
+    //     'firstName': [this.businessCard.firstName],
+    //     'lastName': [this.businessCard.lastName],
+    //     'organization': [this.businessCard.organization],
+    //     'email': [this.businessCard.email],
+    //     'phoneNumber': [this.businessCard.phoneNumber],
+    //     'additionalInfo': [this.businessCard.additionalInfo],
+    //     'imgUrl': [this.businessCard.imgUrl]
+    // });
 }
 
   UpdateBusinessCard(): void {
     // console.log(this.businessCardForm);
     this.businessCardService.UpdateBusinessCard(this.businessCard.key, this.businessCardForm.value);
+    this.webcamImage = false;
+    this.router.navigate(['/app-dashboard']);
+  }
+
+  ReturnToDashboard(): void {
     this.router.navigate(['/app-dashboard']);
   }
 }

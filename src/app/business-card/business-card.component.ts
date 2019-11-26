@@ -36,6 +36,15 @@ export class BusinessCardComponent implements OnInit {
     }
 
     RemoveBusinessCard(): void {
+        this.businessCardForm = this.fb.group ({
+            'firstName': [''],
+            'lastName': [''],
+            'organization': [''],
+            'email': [''],
+            'phoneNumber': [''],
+            'additionalInfo': [''],
+            'imgUrl': ['']
+        });
         this.businessCardService.RemoveBusinessCard(this.businessCard);
     }
 
