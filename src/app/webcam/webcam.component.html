@@ -8,12 +8,10 @@
                 (initError)="handleInitError($event)">
         </webcam>
         <br/>
-        <button class="btn btn-primary" (click)="triggerSnapshot();">
+        <button class="btn btn-outline-primary my-2 my-sm-0" (click)="triggerSnapshot();">
             <i class="fa fa-camera"></i>
             Capture
         </button>
-        <br/>
-        <br/>
     </div>
 </div>
   
@@ -21,8 +19,9 @@
     <img [width]="500" [src]="webcamImage.imageAsDataUrl" id="image" (load)="convertToBase64()" />
     <p style="margin: 6px"></p>
     <div>
-        <button class="btn btn-danger" (click)="webcamImage = !webcamImage">
-            <i class="fa fa-camera"></i>
+        <button class="btn btn-outline-danger my-2 my-sm-0" (click)="webcamImage = !webcamImage">
+                <i class="fa fa-repeat"></i>
+
             Retake
         </button>
     </div>
@@ -102,10 +101,12 @@
     <div class="btn-toolbar justify-content-center" role="toolbar">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <button type="submit" 
-                class="btn btn-primary">Submit
+                class="btn btn-outline-primary my-2 my-sm-0">Submit
             </button>
         </div>
     </div>
     </form>
 </div>
+<br/>
+<br/>
 

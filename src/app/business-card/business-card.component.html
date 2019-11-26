@@ -18,7 +18,7 @@
         <div class="btn-toolbar justify-content-center" role="toolbar">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 <span>
-                    <a class="btn btn-primary" 
+                    <a class="btn btn-outline-primary my-2 my-sm-0" 
                        [routerLink]="['/app-update-business-card', businessCard.key]">
                         <i class="fa fa-edit"></i>
                         Update
@@ -27,7 +27,7 @@
             </div>
             <div>
                 <span>
-                    <button class="btn btn-danger" type="button" (click)="RemoveBusinessCard()">
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="button" (click)="RemoveBusinessCard()">
                         <i class="fa fa-trash"></i>
                         Delete
                     </button>
@@ -37,7 +37,7 @@
     </div>
 </div>
 <br/>
-<div class="card" style="width: 18rem;" *ngIf="toggleUpdate">
+<!-- <div class="card" style="width: 18rem;" *ngIf="toggleUpdate">
     <div class="card-body">
         <form [formGroup]="businessCardForm" class="form-group">
             <p class="card-text"><small class="text-muted">First name:</small></p>
@@ -100,6 +100,11 @@
                     </span>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
+<br/> -->
+
             <!-- <div class="btn-toolbar justify-content-center" role="toolbar">
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <span><button class="btn btn-success" (click)="UpdateBusinessCard()">Update</button></span>
@@ -108,11 +113,6 @@
                     <span><button class="btn btn-danger" (click)="RemoveBusinessCard()">Remove</button></span>
                 </div>
             </div> -->
-        </form>
-    </div>
-</div>
-<br/>
-
 
 <!-- <div class="card" style="width: 42rem;" *ngIf="toggleUpdate">
     <div class="card-body">

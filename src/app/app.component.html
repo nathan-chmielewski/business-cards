@@ -10,9 +10,9 @@
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/app-dashboard']">Dashboard</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" [routerLink]="['/app-new-business-card']">New Business Card</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/app-search-business-cards']">Search</a>
             </li>
@@ -20,6 +20,12 @@
               <a class="nav-link" [routerLink]="['/app-login']" (click)="authService.logout()">Logout</a>
             </li>
           </ul>
+          <a class="btn btn-outline-primary my-2 my-sm-0" 
+             [routerLink]="['/app-new-business-card']">
+             <i class="fa fa-plus"></i>
+             Business Card
+          </a>
+
           <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
