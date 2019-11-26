@@ -1,3 +1,4 @@
+<br/>
 <div class="input-group">
     <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
     <div class="input-group-append">
@@ -6,12 +7,11 @@
         </button>
     </div>
 </div>
-
-
-<div>
-        <app-business-card
-            *ngFor="let businessCard of (businessCardsRef | async)"
-            [businessCard]="businessCard"
-            [businessCardRef]="businessCard">
-        </app-business-card>
-</div>
+<p></p>
+    <div class="row">
+                <app-business-card
+                *ngFor="let businessCard of (businessCardsRef | async)"
+                [businessCard]="businessCard"
+                [businessCardRef]="businessCard">
+            </app-business-card>
+    </div>
