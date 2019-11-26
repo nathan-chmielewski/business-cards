@@ -1,6 +1,6 @@
 <br/>
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
+    <input type="text" class="form-control form-control-lg" placeholder="Search" [(ngModel)]="term">
     <div class="input-group-append">
         <button class="btn btn-secondary" type="button" (click)="queryList()">
         <i class="fa fa-search"></i>
@@ -9,15 +9,22 @@
 </div>
 
 <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="searchNameButton" 
-           id="searchName" [value]="1" [(ngModel)]="searchType">
-    <label class="form-check-label" for="searchName">
+    <input class="form-check-input" type="radio" name="searchFirstNameButton" 
+           id="searchFirstName" [value]="1" [(ngModel)]="searchType">
+    <label class="form-check-label" for="searchFirstName">
           First name
     </label>
 </div>
 <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="searchLastNameButton" 
+           id="searchLastName" [value]="2" [(ngModel)]="searchType">
+    <label class="form-check-label" for="searchLastName">
+          Last name
+    </label>
+</div>
+<div class="form-check form-check-inline">
     <input class="form-check-input" type="radio" name="searchOrgButton" 
-           id="searchOrg" [value]="2" [(ngModel)]="searchType">
+           id="searchOrg" [value]="3" [(ngModel)]="searchType">
     <label class="form-check-label" for="searchOrg">
           Organization
     </label>

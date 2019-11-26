@@ -16,7 +16,7 @@ export class SearchBusinessCardsComponent implements OnInit {
     businessCards: Array<BusinessCard>;
     searchResults: AngularFireList<any[]>;
     term: string;
-    searchType: any;
+    searchType: any = 1;
 
   constructor(private db: AngularFireDatabase,
               private authService: AuthService,
@@ -34,6 +34,11 @@ export class SearchBusinessCardsComponent implements OnInit {
             ref => ref.orderByChild('firstName').equalTo(this.term)).valueChanges();
         }
         else if(this.searchType === 2) {
+            console.log('Search type: last name');
+            this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards',
+            ref => ref.orderByChild('lastName').equalTo(this.term)).valueChanges();
+        }
+        else if(this.searchType === 3) {
             console.log('Search type: organization');
             this.businessCardsRef = this.db.list('/users/' + this.authService.userId + '/business-cards',
             ref => ref.orderByChild('organization').equalTo(this.term)).valueChanges();
