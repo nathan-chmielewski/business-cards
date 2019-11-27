@@ -1,27 +1,13 @@
-# BusinessCards
+My Business Cards app is hosted on Firebase at: https://business-cards-f8fdb.firebaseapp.com
+The Github URL is: https://github.com/nathan-chmielewski/business-cards
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+My application has the following functionality: 
+* Login
+* Logout
+* Search by first name, last name, or organization (case-sensitive)
+* Upload business card with webcam image, using Google Vision API text detection
+* Update business card contents
+* Delete business card
+* Page not found
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This project was an exercise in building a full-fledged prototype web app using Angular. The basic functions of the app work as expected, though you may experience a few quirks that can be resolved by a quick logout/clear browser. There are many components of the app that I would like to improve on in the near future, including improving text detection accuracy, the ability to update the business card image and contents from that image of a currently saved business card, improving search functionality (such as removing case-sensitivity, adding dynamic queries), multi-user support (using firebase UID to build separate databases), social login, improving routing (such as passing params, child routes across certain paths, login redirect), as well as design (currently using Bootstrap 4). 
