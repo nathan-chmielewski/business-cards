@@ -57,6 +57,10 @@ export class WebcamComponent implements OnInit {
         this.trigger.next();
     }
 
+    // public toggleWebcam(): void {
+    //     this.showWebcam = !this.showWebcam;
+    // }
+
   public handleInitError(error: WebcamInitError): void {
     if (error.mediaStreamError && error.mediaStreamError.name === "NotAllowedError") {
         console.warn("Camera access was not allowed by user!");
