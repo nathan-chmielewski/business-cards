@@ -1,12 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BusinessCardService } from '../business-card.service';
-import { AngularFireObject, AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { BusinessCard } from '../business-card/business-card.model';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-update-business-card',
@@ -62,18 +61,6 @@ export class UpdateBusinessCardComponent implements OnInit {
         this.webcamImage = true;
     });
   }
-
-  OnChanges() {
-    // this.businessCardForm = this.fb.group ({
-    //     'firstName': [this.businessCard.firstName],
-    //     'lastName': [this.businessCard.lastName],
-    //     'organization': [this.businessCard.organization],
-    //     'email': [this.businessCard.email],
-    //     'phoneNumber': [this.businessCard.phoneNumber],
-    //     'additionalInfo': [this.businessCard.additionalInfo],
-    //     'imgUrl': [this.businessCard.imgUrl]
-    // });
-}
 
   UpdateBusinessCard(): void {
     // console.log(this.businessCardForm);

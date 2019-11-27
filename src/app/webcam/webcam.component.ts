@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { WebcamInitError } from '../modules/webcam/domain/webcam-init-error';
 import { WebcamImage } from '../modules/webcam/domain/webcam-image';
 import { Subject, Observable } from 'rxjs';
-import { WebcamUtil } from '../modules/webcam/util/webcam.util';
 import domtoimage from 'dom-to-image';
 import { BusinessCardService } from '../business-card.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BusinessCard } from '../business-card/business-card.model';
-import { isUndefined } from 'util';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-webcam',
@@ -36,7 +35,9 @@ export class WebcamComponent implements OnInit {
     
     constructor (private businessCardService: BusinessCardService,
                  private http: HttpClient,
-                 private fb: FormBuilder) {
+                 private fb: FormBuilder,
+                 private route: ActivatedRoute,
+                 private router: Router) {
 
     this.businessCardForm = fb.group ({
         'firstName': [''],
@@ -99,7 +100,6 @@ export class WebcamComponent implements OnInit {
     // Google Cloud requires that the header for a base64 image be removed
     const parsedImage = this.base64.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
 
-    // const parsedImage = base64Image.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
     console.log('SELECTED IMAGE 3');
     console.log(parsedImage);
     console.log('SELECTED IMAGE 3');
@@ -128,11 +128,11 @@ export class WebcamComponent implements OnInit {
         url,
         request
     ).subscribe( (results: any) => {
-        console.log('RESULTS RESULTS RESULTS');
+        console.log('RESULTS');
         console.log(results);
         this.visionResults = results;
         this.populateForm();
-        console.log('RESULTS RESULTS RESULTS');
+        console.log('RESULTS');
     });
 
   }
@@ -216,5 +216,9 @@ export class WebcamComponent implements OnInit {
     this.businessCardService.AddBusinessCard(businessCard);
     this.businessCardForm.reset();
     this.webcamImage = null;
-}
+  }
+
+  ReturnToDashboard(): void {
+    this.router.navigate(['/app-dashboard']);
+  }
 }

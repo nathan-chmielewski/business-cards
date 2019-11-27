@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({

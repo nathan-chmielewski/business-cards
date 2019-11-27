@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from './auth/auth.service';
 
 @Component({

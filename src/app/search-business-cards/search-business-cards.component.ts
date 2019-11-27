@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { BusinessCardService } from '../business-card.service';
 import { Observable } from 'rxjs';
 import { BusinessCard } from '../business-card/business-card.model';
 import { AuthService } from '../auth/auth.service';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-business-cards',
@@ -19,8 +17,7 @@ export class SearchBusinessCardsComponent implements OnInit {
     searchType: any = 1;
 
   constructor(private db: AngularFireDatabase,
-              private authService: AuthService,
-              private businessCardService: BusinessCardService) {
+              private authService: AuthService) {
     }
 
     ngOnInit() {

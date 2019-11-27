@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BusinessCard } from '../business-card/business-card.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { BusinessCardService } from '../business-card.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,17 +1,6 @@
 <p></p>
 <h4>Login</h4>
-<!-- <h1 *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}</h1> -->
 
-<!-- <div *ngIf="!(authService.userData | async)">
-    <input type="text" [(ngModel)]="email" placeholder="email">
-    <input type="password" [(ngModel)]="password" placeholder="password">
-
-    <button (click)="signUp()">Sign Up</button>
-
-    <button (click)="login()">Login</button>
-</div>
-
-<button (click)="signOut()" *ngIf="authService.userData | async">Logout</button> -->
 <form *ngIf="!(authService.user | async)">
     <div class="form-group">
       <label for="email">Email address</label>
@@ -29,7 +18,6 @@
              placeholder="Enter password"
              name="password" #password>
     </div>
-    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
     <div>
       <button class="btn btn-outline-primary my-2 my-sm-0" (click)="login(email.value, password.value)">
         <i class="fa fa-sign-in"></i>
@@ -38,26 +26,4 @@
     </div>
   </form>
 
-<!-- <form class="form-inline" *ngIf="!(authService.userData | async)">
-  <div class="form-group">
-    <label for="email">Email: </label>
-    <input class="form-control" 
-           name="email" #email>
-  </div>
-
-  <div class="form-group">
-    <label for="password">Password: </label>
-    <input class="form-control" 
-           type="password" 
-           name="password" #password>
-  </div>
-
-  <a [routerLink]="['/app-dashboard']" class="btn btn-default" (click)="login(email.value, password.value)">
-    Submit
-  </a>
-</form> -->
-
-<!-- <div class="well" *ngIf="authService.getUser()">
-  Logged in as <b>{{ authService.getUser() }}</b>
-  <a href (click)="logout()">Log out</a>
-</div> -->
+  

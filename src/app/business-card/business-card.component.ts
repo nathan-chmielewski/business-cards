@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BusinessCard } from './business-card.model';
 import { AngularFireObject } from '@angular/fire/database';
 import { BusinessCardService } from '../business-card.service';
-import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -15,7 +14,6 @@ export class BusinessCardComponent implements OnInit {
     @Input() businessCardRef: AngularFireObject<any>;
     @Input() businessCardForm: FormGroup;
     toggleUpdate: boolean = false;
-//   @Input() businessCardRef: Observable<any>;
 
     constructor(private businessCardService: BusinessCardService,
                 private fb: FormBuilder) {
