@@ -57,10 +57,6 @@ export class WebcamComponent implements OnInit {
         this.trigger.next();
     }
 
-    // public toggleWebcam(): void {
-    //     this.showWebcam = !this.showWebcam;
-    // }
-
   public handleInitError(error: WebcamInitError): void {
     if (error.mediaStreamError && error.mediaStreamError.name === "NotAllowedError") {
         console.warn("Camera access was not allowed by user!");
@@ -185,7 +181,7 @@ export class WebcamComponent implements OnInit {
         email = '';
     } else {
         email = this.extractEmail(fullTextAnnotation["text"])[0];
-        console.log('Extract email:', this.businessCard.email);
+        console.log('Extract email:', email);
     }
 
     if ((typeof this.extractPhoneNumber(fullTextAnnotation["text"]) === 'undefined')
@@ -193,7 +189,7 @@ export class WebcamComponent implements OnInit {
              phoneNumber = '';
     } else {
         phoneNumber = this.extractPhoneNumber(fullTextAnnotation["text"])[0];
-        console.log('Extract phone number:', this.businessCard.phoneNumber);
+        console.log('Extract phone number:', phoneNumber);
     }
 
     this.businessCardForm.get('firstName').setValue(firstName);
