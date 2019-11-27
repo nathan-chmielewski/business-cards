@@ -47,7 +47,6 @@ const routes: Routes = [
     SearchBusinessCardsComponent,
     UpdateBusinessCardComponent,
     PageNotFoundComponent
-    // NewBusinessCardComponent
   ],
   imports: [
     BrowserModule,
