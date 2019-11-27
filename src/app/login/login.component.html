@@ -18,6 +18,7 @@
              placeholder="Enter password"
              name="password" #password>
     </div>
+    <p style="color: red">{{ authService.errorMessage }}</p>
     <div>
       <button class="btn btn-outline-primary my-2 my-sm-0" (click)="login(email.value, password.value)">
         <i class="fa fa-sign-in"></i>
@@ -26,4 +27,3 @@
     </div>
   </form>
 
-  
