@@ -1,6 +1,12 @@
 <p></p>
 <h4>Create Business Card</h4>
 <p></p>
+
+<p class="text">
+ Please allow camera access for full functionality.
+</p>
+<p class="text">Hold a business card up to your webcam, click 'Capture', and wait a few moments for the form to auto-fill.
+</p>
 <div style="text-align:center">
     <div  *ngIf="!webcamImage">
         <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
@@ -21,7 +27,6 @@
     <div>
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="webcamImage = !webcamImage">
                 <i class="fa fa-repeat"></i>
-
             Retake
         </button>
     </div>
@@ -32,7 +37,6 @@
 <ul *ngFor="let error of errors">
     <li>{{error | json}}</li>
 </ul>
-
 <div class="form-group">
     <form [formGroup]="businessCardForm"
         (ngSubmit)="onSubmit(businessCardForm.value)"
@@ -101,7 +105,9 @@
     <div class="btn-toolbar justify-content-center" role="toolbar">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <button type="submit" 
-                class="btn btn-outline-primary my-2 my-sm-0">Submit
+                class="btn btn-outline-primary my-2 my-sm-0">
+                <i class="fa fa-address-card"></i>
+                Submit
             </button>
         </div>
     </div>
