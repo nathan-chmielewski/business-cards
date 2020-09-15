@@ -1,6 +1,8 @@
 My Business Cards app is hosted on Firebase at: https://business-cards-f8fdb.firebaseapp.com
 The Github URL is: https://github.com/nathan-chmielewski/business-cards
 
+Please contact me for login details: nathanch@me.com
+
 My application has the following functionality: 
 * Login
 * Logout
